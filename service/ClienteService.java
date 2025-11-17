@@ -10,7 +10,7 @@ public class ClienteService {
     private int proximoId = 1;
 
     // metodo buscar id reutilizar
-    public Cliente buscarId(int id) {
+    public Cliente buscarId(int id) {   
         for (Cliente c : clientes) {
             if (c.getId() == id) {
                 return c;

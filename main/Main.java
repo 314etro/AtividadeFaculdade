@@ -22,6 +22,10 @@ public class Main {
         System.out.flush();
     }
 
+    public static void espaco(){
+        System.out.println("");
+    }
+
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
@@ -48,6 +52,9 @@ public class Main {
             System.out.println("10 - Histórico de vendas");// 12
 
             System.out.println("0 - Sair");// 13
+
+            espaco();
+
             System.out.print("Opção: ");
             opcao = scanner.nextInt();
             scanner.nextLine();
@@ -120,10 +127,24 @@ public class Main {
                     System.out.println("\n=== Editar Cliente ===");
 
                     clienteService.listar();
+                    espaco();
 
-                    System.out.print("\nDigite o ID do cliente que deseja editar: ");
+                 
+
+                    System.out.print("Digite o ID do cliente que deseja editar: ");
                     int id = scanner.nextInt();
                     scanner.nextLine();
+
+
+                       Cliente cliente = clienteService.buscarId(id);
+                    if (cliente == null) {
+                        System.out.println("Cliente não encontrado!");
+                        System.out.println("Pressione ENTER para continuar...");
+                        scanner.nextLine();
+                        break;
+                    }
+
+                    espaco();
 
                     System.out.print("Novo nome: ");
                     String novoNome = scanner.nextLine();
@@ -214,9 +235,21 @@ public class Main {
 
                     jogoService.listar();
 
-                    System.out.print("\nDigite o ID do jogo que deseja editar: ");
+                    espaco();
+
+                    System.out.print("Digite o ID do jogo que deseja editar: ");
                     int id = scanner.nextInt();
                     scanner.nextLine();
+
+
+                       Jogo jogo = jogoService.buscarId(id);
+                    if (jogo == null) {
+                        System.out.println("Jogo não encontrado!");
+                        System.out.println("Pressione ENTER para continuar...");
+                        scanner.nextLine();
+                        break;
+                    }
+
 
                     System.out.print("Novo nome: ");
                     String novoNome = scanner.nextLine();
@@ -263,10 +296,11 @@ public class Main {
                 case 9: {
                     limparTela();
                     System.out.println("=== Realizar venda ===");
-
+                    espaco();
                     clienteService.listar();
+                    espaco();
 
-                    System.out.println("Digite o id do cliente: ");
+                    System.out.print("Digite o id do cliente: ");
                     int idCliente = scanner.nextInt();
                     scanner.nextLine();
 
